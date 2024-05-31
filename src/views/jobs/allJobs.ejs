@@ -1,0 +1,9 @@
+<%- include('partials/layout') %>
+<h1>All Jobs</h1>
+<ul class="list-group">
+  <% jobs.forEach(job => { %>
+    <li class="list-group-item">
+      <a href="/jobs/<%= job.id %>"><%= job.title %> at <%= job.company %></a>
+    </li>
+  <% }) %>
+</ul>

@@ -1,0 +1,28 @@
+<%- include('../partials/layout') %>
+<h1><%= job.title %> at <%= job.company %></h1>
+<p><strong>Description:</strong></p>
+<p><%= job.description %></p>
+
+<% if (user && user.email === job.recruiter) { %>
+  <a href="/jobs/<%= job.id %>/edit" class="btn btn-warning">Edit Job</a>
+  <form action="/jobs/<%= job.id %>/delete" method="POST" style="display:inline;">
+    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this job?');">Delete Job</button>
+  </form>
+<% } else { %>
+  <h2>Apply for this Job</h2>
+  <form action="/jobs/<%= job.id %>/apply" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="resume">Resume</label>
+      <input type="file" class="form-control-file" id="resume" name="resume" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Apply</button>
+  </form>
+<% } %>
