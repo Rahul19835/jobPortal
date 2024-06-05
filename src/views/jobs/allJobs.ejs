@@ -1,0 +1,39 @@
+<% if (jobs && jobs.length > 0) { %>
+<div class="jobWrap">
+    <ul>
+        <% jobs.forEach(job => { %>
+        <li>
+            <a href="/jobs/<%= job.id %>">
+                <div class="job-card">
+                    <div class="job-card-content">
+                        <div class="card-head">
+                            <div class="company-logo">
+                                <img src="/file_upload/<%= job.img %>" alt="" />
+                            </div>
+                            <div class="company-detail">
+                                <div class="company-name"><%= job.companyName %></div>
+                                <div class="company-loc"><%= job.companyLocation %></div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="job-title"><%= job.jobTitle %></div>
+                            <div class="job-desc"><%= job.jobDesc %></div>
+                        </div>
+                        <div class="card-foot">
+                            <span class="job-type"><%= job.jobType %></span>
+                            <span class="job-price">$<%= job.JobPrice %></span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <% }) %>
+    </ul>
+</div>
+<% }else{ %>
+<div class="noDataWrap">
+    <div class="noImg">
+        <img src="/image/no-record-found.png" />
+    </div>
+</div>
+<% } %>

@@ -1,0 +1,25 @@
+<div class="applicantsList">
+    <h1>Applicants for <%= job.jobTitle %></h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone No.</th>
+                <th>Resume</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% applicants.forEach(applicant => { %>
+            <tr>
+                <td><%= applicant.name %></td>
+                <td><%= applicant.email %></td>
+                <td><%= applicant.phone %></td>
+                <td>
+                    <a href="/file_upload/<%= applicant.resume %>" target="_blank">Resume</a>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>

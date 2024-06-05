@@ -1,0 +1,64 @@
+<div class="creatJob">
+    <h1 class="text-center">Edit Job</h1>
+    <div class="creatJobBox">
+        <% if (errors && errors.length > 0) { %>
+            <div class="alert alert-danger">
+              <ul>
+                <% errors.forEach(function(error) { %>
+                  <li><%= error.msg %></li>
+                <% }) %>
+              </ul>
+            </div>
+          <% } %>
+        <form action="/jobs/<%= job.id %>/edit" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="title">Job Title</label>
+            <input type="text" class="form-control" id="jobTitle" name="jobTitle" value="<%= job ? job.jobTitle : '' %>">
+          </div>
+          <div class="form-group">
+            <label for="description">Job Description</label>
+            <textarea class="form-control" id="jobDesc" name="jobDesc" rows="3"><%= job ? job.jobDesc : '' %></textarea>
+          </div>
+          <div class="form-group">
+            <label for="company">Company Name</label>
+            <input type="text" class="form-control" id="companyName" name="companyName" value="<%= job ? job.companyName : '' %>">
+          </div>
+          <div class="form-group">
+            <label for="company">Location</label>
+            <input type="text" class="form-control" id="companyLocation" name="companyLocation" value="<%= job ? job.companyLocation : '' %>">
+          </div>
+          <div class="form-group">
+            <label for="resume">Company Logo</label>
+            <input type="file" class="form-control-file" id="img" name="img">
+          </div>
+          <div class="form-group">
+            <label for="company">Employee Type</label>
+            <select class="form-control" id="jobType" name="jobType">
+              <option value="">Select</option>
+              <option value="Full Time" <%= job && job.jobType === 'Full Time' ? 'selected' : '' %>>Full Time</option>
+              <option value="Part Time" <%= job && job.jobType === 'Part Time' ? 'selected' : '' %>>Part Time</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="company">Experience</label>
+            <select class="form-control" id="experience" name="experience">
+              <option value="">Select</option>
+              <option value="1" <%= job && job.experience === '1' ? 'selected' : '' %>>1</option>
+              <option value="2" <%= job && job.experience === '2' ? 'selected' : '' %>>2</option>
+              <option value="3" <%= job && job.experience === '3' ? 'selected' : '' %>>3</option>
+              <option value="4" <%= job && job.experience === '4' ? 'selected' : '' %>>4</option>
+              <option value="5+" <%= job && job.experience === '5+' ? 'selected' : '' %>>5+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="company">Qualifications</label>
+            <input type="text" class="form-control" id="qualifications" name="qualifications" value="<%= job ? job.qualifications : '' %>">
+          </div>
+          <div class="form-group">
+            <label for="company">Salary</label>
+            <input type="text" class="form-control" id="JobPrice" name="JobPrice" value="<%= job ? job.JobPrice : '' %>">
+          </div>
+          <button type="submit" class="site-btn">Edit Job</button>
+          </form>
+    </div>
+</div>

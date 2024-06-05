@@ -1,0 +1,31 @@
+<header>
+    <div class="container">
+        <div class="headerBox">
+            <div class="headerLogo">
+                <a href="/">
+                    <img src="/image/logo.png">
+                </a>
+            </div>
+            <div class="headerRightBox">
+                <% if (locals.user && locals.lastVisit) { %>
+                <div class="lastVisit"><span>Last Visit:</span> <%= locals.lastVisit %></div>
+                <% } %>
+                <div class="userTop">
+                    <% if(locals.user){ %>
+                        <a href="/jobs/create">Post Job</a>
+                        <a href="/users/logout">Logout</a>
+                    <% } else { %>
+                        <a href="/users/login">Login</a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <!-- Wishlist Box -->
+        <div class="wishlistBox" id="wishlistBox">
+            <div class="wishlistBody">
+                
+            </div>
+            <div class="backdrop"></div>
+        </div>
+    </div>
+</header>
