@@ -1,6 +1,8 @@
 import {
   createJob, getAllJobs, findJobById, updateJob, deleteJob, addApplicantToJob, getApplicantsForJob
 } from '../models/job.model.js';
+import { sendConfirmationEmail } from '../middleware/mailer.js';
+
 
 export const renderAllJobs = (req, res) => {
   const jobs = getAllJobs();
@@ -67,5 +69,8 @@ export const handleApplyJob = (req, res) => {
   const { name, email, phone } = req.body;
   const resume = req.file.filename;
   addApplicantToJob(req.params.id, { name, email, phone, resume });
+  const subject = 'Job Application Confirmation';
+  const text = `Dear ${name},\n\nThank you for applying for the position. We have received your application and will review it shortly.\n\nBest regards,\nJob Portal Team`;
+  sendConfirmationEmail(email, subject, text);
   res.redirect('/jobs');
 };
